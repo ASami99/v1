@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Configurator UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <iframe id="app" class="preview-frame" src="https://playcanv.as/e/p/3xE3ETOw/" title="Preview"
+        sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+
+    <div class="garden-ui">
+        <div class="section">
+            <div class="section-header">
+                <h3>Size</h3><span>▼</span>
+            </div>
+            <div class="section-content">
+                <div class="select-group">
+                    <label for="width">Choose Width (ft)</label>
+                    <select id="width">
+                        <option value="8">8 ft</option>
+                        <option value="10">10 ft</option>
+                        <option value="12">12 ft</option>
+                        <option value="14">14 ft</option>
+                        <option value="16" selected>16 ft</option>
+                        <option value="18">18 ft</option>
+                        <option value="20">20 ft</option>
+                        <option value="22">22 ft</option>
+                        <option value="24">24 ft</option>
+                    </select>
+                </div>
+                <div class="select-group">
+                    <label for="depth">Choose Depth (ft)</label>
+                    <select id="depth">
+                        <option value="6">6 ft</option>
+                        <option value="8">8 ft</option>
+                        <option value="10" selected>10 ft</option>
+                        <option value="12">12 ft</option>
+                        <option value="14">14 ft</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h3>Doors & Windows</h3><span>▼</span>
+            </div>
+            <div class="section-content">
+                <div class="list-container" data-xpv-attribute-id="240988" data-xpv-selected-value-id="585419">
+                    <label class="v-label">Door, Window & Roof Trim</label>
+                    <div class="v-list" role="list" aria-label="Trim options">
+                        <button class="trim-btn" data-message-type="blackMat" data-value="black">Black</button>
+                        <button class="trim-btn" data-message-type="greyMat" data-value="grey">Grey</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <!-- Door/Window Type Selection -->
+                <div class="components-list">
+                    <div class="component-item" data-id="door-0">
+                        <div class="item-controls">
+                            <div class="control-group type-control-group">
+                                <select class="component-type" data-wall="front" data-id="door-0">
+                                    <option value="Single_Door">Single Door</option>
+                                    <option value="Double_Doors_5ft">5' Double Doors</option>
+                                    <option value="Patio_Sliders_2.4m">Patio Slider 2.4m</option>
+                                    <option value="Patio_Sliders_3m">Patio Slider 3m</option>
+                                    <option value="Patio_Sliders_3.6m">Patio Slider 3.6m</option>
+                                    <option value="BiFold_3m">BiFold 3m</option>
+                                    <option value="BiFold_4m">BiFold 4m</option>
+                                    <option value="Double_Doors_4ft" selected>4' Double Doors</option>
+                                </select>
+                                <button class="btn danger remove-btn" data-id="door-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="16"
+                                        height="16">
+                                        <path
+                                            d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="control-group">
+                                <label>Position:</label>
+                                <input type="range" class="component-pos" data-id="door-0" value="0" min="-7.5"
+                                    max="7.5" step="0.25">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add New Component Button -->
+                <button class="btn" id="add-door-component">+ Add Another Door/Window</button>
+            </div>
+        </div>
+
+
+
+
+        <div class="section">
+            <div class="section-header">
+                <h3>External Cladding</h3><span>▼</span>
+            </div>
+            <div class="section-content">
+                <div class="list-container" data-xpv-attribute-id="240988" data-xpv-selected-value-id="585419">
+                    <label class="v-label">Cladding Material</label>
+                    <div class="v-list" role="list" aria-label="Cladding options">
+                        <button class="trim-btn" data-message-type="cladding_light_grey" data-value="light_grey">Light
+                            Grey</button>
+                        <button class="trim-btn" data-message-type="cladding_dark_grey" data-value="dark_grey">Dark
+                            Grey</button>
+                        <button class="trim-btn" data-message-type="cladding_grey" data-value="grey">Grey</button>
+                        <button class="trim-btn" data-message-type="cladding_blue" data-value="blue">Blue</button>
+                        <button class="trim-btn" data-message-type="cladding_black_hor" data-value="black_hor">Black
+                            Horizontal</button>
+                        <button class="trim-btn" data-message-type="cladding_cedar" data-value="cedar">Cedar</button>
+                        <button class="trim-btn" data-message-type="cladding_wood" data-value="wood">Wood</button>
+                        <button class="trim-btn" data-message-type="cladding_wood_beige" data-value="wood_beige">Wood
+                            Beige</button>
+                        <button class="trim-btn" data-message-type="cladding_black_vert" data-value="black_vert">Black
+                            Vertical</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="price">£31,324.08</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

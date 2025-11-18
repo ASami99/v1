@@ -465,3 +465,17 @@ body {
   color: var(--text);
   font-weight: 600;
 }
+
+
+
+
+
+
+.size_section {
+  display: block;
+}
+
+
+.door_window_section {
+  display: none;
+}

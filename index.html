@@ -9,15 +9,15 @@
 </head>
 
 <body>
-    <iframe id="app" class="preview-frame" src="https://playcanv.as/e/b/43ada6ae" title="Preview"
+    <iframe id="app" class="preview-frame" src="https://playcanv.as/e/p/3xE3ETOw/" title="Preview"
         sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
 
     <div class="garden-ui">
         <div class="section">
-            <div class="section-header"> 
+            <div class="section-header">
                 <h3>Size</h3><span>▼</span>
             </div>
-            <div class="section-content">
+            <div class="section-content size_section">
                 <div class="select-group">
                     <label for="width">Choose Width (ft)</label>
                     <select id="width">
@@ -42,6 +42,7 @@
                         <option value="14">14 ft</option>
                     </select>
                 </div>
+                <button class="btn" id="dnw">Next</button>
             </div>
         </div>
 
@@ -49,55 +50,125 @@
             <div class="section-header">
                 <h3>Doors & Windows</h3><span>▼</span>
             </div>
-            <div class="section-content">
-                <div class="list-container" data-xpv-attribute-id="240988" data-xpv-selected-value-id="585419">
+            <div class="door_window_section" style="padding: 1rem;">
+                <button class="btn" id="adjust_size" style="margin: auto 0 auto auto;">Adjust Size</button>
+                <!-- Wall Selection -->
+                <div class="list-container">
+                    <label class="v-label">Select Wall</label>
+                    <div class="v-list" role="list" aria-label="Wall options">
+                        <button class="trim-btn wall-select-btn" data-wall="front" data-message-type="wall_select">Front
+                            Wall</button>
+                        <button class="trim-btn wall-select-btn" data-wall="back" data-message-type="wall_select">Back
+                            Wall</button>
+                        <button class="trim-btn wall-select-btn" data-wall="left" data-message-type="wall_select">Left
+                            Wall</button>
+                        <button class="trim-btn wall-select-btn" data-wall="right" data-message-type="wall_select">Right
+                            Wall</button>
+                    </div>
+                </div>
+
+                <!-- Door, Window & Roof Trim -->
+                <div class="list-container">
                     <label class="v-label">Door, Window & Roof Trim</label>
                     <div class="v-list" role="list" aria-label="Trim options">
                         <button class="trim-btn" data-message-type="blackMat" data-value="black">Black</button>
                         <button class="trim-btn" data-message-type="greyMat" data-value="grey">Grey</button>
                     </div>
                 </div>
-            </div>
-            <div class="section-content">
-                <!-- Door/Window Type Selection -->
-                <div class="components-list">
-                    <div class="component-item" data-id="door-0">
-                        <div class="item-controls">
-                            <div class="control-group type-control-group">
-                                <select class="component-type" data-wall="front" data-id="door-0">
-                                    <option value="Single_Door">Single Door</option>
-                                    <option value="Double_Doors_5ft">5' Double Doors</option>
-                                    <option value="Patio_Sliders_2.4m">Patio Slider 2.4m</option>
-                                    <option value="Patio_Sliders_3m">Patio Slider 3m</option>
-                                    <option value="Patio_Sliders_3.6m">Patio Slider 3.6m</option>
-                                    <option value="BiFold_3m">BiFold 3m</option>
-                                    <option value="BiFold_4m">BiFold 4m</option>
-                                    <option value="Double_Doors_4ft" selected>4' Double Doors</option>
-                                </select>
-                                <button class="btn danger remove-btn" data-id="door-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="16"
-                                        height="16">
-                                        <path
-                                            d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z">
-                                        </path>
-                                    </svg>
-                                </button>
+
+                <!-- SEPARATED: Doors Section -->
+                <div class="component-category">
+                    <h4>Doors</h4>
+                    <div class="wall-components">
+                        <!-- Front Wall Doors -->
+                        <div class="wall-component-section" data-wall="front" data-type="door">
+                            <h5>Front Wall Doors</h5>
+                            <div class="components-list" data-wall="front" data-type="door">
+                                <!-- Empty - users add manually -->
                             </div>
-                            <div class="control-group">
-                                <label>Position:</label>
-                                <input type="range" class="component-pos" data-id="door-0" value="0" min="-7.5"
-                                    max="7.5" step="0.25">
+                            <button class="btn add-component-btn" data-wall="front" data-type="door">+ Add Door to Front
+                                Wall</button>
+                        </div>
+
+                        <!-- Back Wall Doors -->
+                        <div class="wall-component-section" data-wall="back" data-type="door" style="display: none;">
+                            <h5>Back Wall Doors</h5>
+                            <div class="components-list" data-wall="back" data-type="door">
+                                <!-- Empty -->
                             </div>
+                            <button class="btn add-component-btn" data-wall="back" data-type="door">+ Add Door to Back
+                                Wall</button>
+                        </div>
+
+                        <!-- Left Wall Doors -->
+                        <div class="wall-component-section" data-wall="left" data-type="door" style="display: none;">
+                            <h5>Left Wall Doors</h5>
+                            <div class="components-list" data-wall="left" data-type="door">
+                                <!-- Empty -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="left" data-type="door">+ Add Door to Left
+                                Wall</button>
+                        </div>
+
+                        <!-- Right Wall Doors -->
+                        <div class="wall-component-section" data-wall="right" data-type="door" style="display: none;">
+                            <h5>Right Wall Doors</h5>
+                            <div class="components-list" data-wall="right" data-type="door">
+                                <!-- Empty -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="right" data-type="door">+ Add Door to Right
+                                Wall</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Add New Component Button -->
-                <button class="btn" id="add-door-component">+ Add Another Door/Window</button>
+                <!-- SEPARATED: Windows Section -->
+                <div class="component-category">
+                    <h4>Windows</h4>
+                    <div class="wall-components">
+                        <!-- Front Wall Windows -->
+                        <div class="wall-component-section" data-wall="front" data-type="window">
+                            <h5>Front Wall Windows</h5>
+                            <div class="components-list" data-wall="front" data-type="window">
+                                <!-- Empty - users add manually -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="front" data-type="window">+ Add Window to
+                                Front Wall</button>
+                        </div>
+
+                        <!-- Back Wall Windows -->
+                        <div class="wall-component-section" data-wall="back" data-type="window" style="display: none;">
+                            <h5>Back Wall Windows</h5>
+                            <div class="components-list" data-wall="back" data-type="window">
+                                <!-- Empty -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="back" data-type="window">+ Add Window to
+                                Back Wall</button>
+                        </div>
+
+                        <!-- Left Wall Windows -->
+                        <div class="wall-component-section" data-wall="left" data-type="window" style="display: none;">
+                            <h5>Left Wall Windows</h5>
+                            <div class="components-list" data-wall="left" data-type="window">
+                                <!-- Empty -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="left" data-type="window">+ Add Window to
+                                Left Wall</button>
+                        </div>
+
+                        <!-- Right Wall Windows -->
+                        <div class="wall-component-section" data-wall="right" data-type="window" style="display: none;">
+                            <h5>Right Wall Windows</h5>
+                            <div class="components-list" data-wall="right" data-type="window">
+                                <!-- Empty -->
+                            </div>
+                            <button class="btn add-component-btn" data-wall="right" data-type="window">+ Add Window to
+                                Right Wall</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
 
 
         <div class="section">
@@ -131,6 +202,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="door.js"></script>
 </body>
 
 </html>

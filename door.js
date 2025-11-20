@@ -104,10 +104,10 @@ const DOOR_AVAILABILITY_DEPTH_RULES = {
         '3_6M_Patio_Doors_Sliders',
         '3M_Bi-Fold_Doors',
         '4M_Bi-Fold_Doors',
-        '5M_Bi-Fold_Doors',
+        // '5M_Bi-Fold_Doors',
         '3M_Transom_Bi-Fold_Doors',
         '4M_Transom_Bi-Fold_Doors',
-        '5M_Transom_Bi-Fold_Doors'
+        // '5M_Transom_Bi-Fold_Doors'
     ]
 };
 
@@ -450,7 +450,7 @@ function addComponent(wall = 'front', componentType = 'door') {
         </div>
         <div class="control-group">
           <label>Position:</label>
-          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="0" min="-500" max="500" step="1">
+          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="-1000" min="-1000" max="1000" step="1">
         </div>
       </div>
     </div>

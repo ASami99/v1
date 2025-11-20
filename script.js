@@ -1,3 +1,18 @@
+// close_ui button functionality
+const closeBtn = document.getElementById('close_ui');
+closeBtn.addEventListener('click', () => {
+    const gardenUI = document.querySelector('.garden-ui');
+    if (gardenUI.style.display === 'none') {
+        gardenUI.style.display = 'block';
+        closeBtn.textContent = '😑';
+    }
+    else {
+        gardenUI.style.display = 'none';
+        closeBtn.textContent = '👀';
+    }
+});
+
+
 const app = document.getElementById('app');
 
 // Main event delegation for all UI interactions
@@ -190,7 +205,7 @@ function addComponent(wall = 'front', componentType = 'door') {
         </div>
         <div class="control-group">
           <label>Position:</label>
-          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="0" min="-500" max="500" step="1">
+          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="490" min="-500" max="500" step="1">
         </div>
       </div>
     </div>

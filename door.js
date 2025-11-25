@@ -450,7 +450,7 @@ function addComponent(wall = 'front', componentType = 'door') {
         </div>
         <div class="control-group">
           <label>Position:</label>
-          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="-1000" min="-1000" max="1000" step="1">
+          <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="150" min="-500" max="800" step="1">
         </div>
       </div>
     </div>

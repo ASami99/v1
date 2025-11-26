@@ -1,3 +1,8 @@
+// Ensure componentCounter exists (safety check)
+if (typeof componentCounter === 'undefined') {
+    let componentCounter = 0;
+}
+
 // Door availability rules based on width (for Front & Back walls)
 const DOOR_AVAILABILITY_WIDTH_RULES = {
     // 8-10ft: Only single doors (no patio, no bi-fold)
@@ -450,6 +455,7 @@ function addComponent(wall = 'front', componentType = 'door') {
         </div>
         <div class="control-group">
           <label>Position:</label>
+          
           <input type="range" class="component-pos" data-id="${componentId}" data-wall="${wall}" data-type="${componentType}" value="150" min="-500" max="800" step="1">
         </div>
       </div>
@@ -466,7 +472,8 @@ function addComponent(wall = 'front', componentType = 'door') {
         componentId: componentId,
         componentType: componentType,
         specificType: defaultType,
-        position: 0,
+        // position: 0,
+        position: findNextAvailablePosition(wall, getDoorWidthRequirement(defaultType)),
         wall: wall
     }, '*');
 
@@ -751,9 +758,6 @@ function hasEnoughWallSpace(wall, componentType, newComponentWidth = 0) {
 
     return usedSpace <= availableSpace;
 }
-
-
-
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function () {
     currentBuildingWidth = parseFloat(widthEl.value);

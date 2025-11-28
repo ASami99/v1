@@ -233,58 +233,42 @@ function resetAllDoorsAndWindows() {
 
 }
 
-// Add to script.js (simple version)
 function showNotification(message, type = 'info') {
-    console.log(`[${type.toUpperCase()}] ${message}`);
-    // Optional: Add a simple alert or console notification
-}
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        background: ${type === 'warning' ? '#fff3cd' :
+            type === 'error' ? '#f8d7da' : '#d1ecf1'};
+        border: 1px solid ${type === 'warning' ? '#ffeaa7' :
+            type === 'error' ? '#f5c6cb' : '#bee5eb'};
+        border-radius: 4px;
+        color: ${type === 'warning' ? '#856404' :
+            type === 'error' ? '#721c24' : '#0c5460'};
+        z-index: 1000;
+        max-width: 300px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 14px;
+    `;
+    notification.textContent = message;
 
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notif => notif.remove());
 
-// When positioning a door, check against other doors on the same wall
-function canPlaceDoor(wallId, newPosition, doorWidth, doorIdToIgnore = null) {
-    const existingDoors = getDoorsOnWall(wallId);
-    const buffer = 10; // 10px minimum gap
+    document.body.appendChild(notification);
 
-    for (const door of existingDoors) {
-        if (door.id === doorIdToIgnore) continue;
-
-        const doorLeft = door.position - (door.width / 2);
-        const doorRight = door.position + (door.width / 2);
-        const newLeft = newPosition - (doorWidth / 2);
-        const newRight = newPosition + (doorWidth / 2);
-
-        // Check for overlap
-        if (newLeft < doorRight + buffer && newRight > doorLeft - buffer) {
-            return false; // Overlap detected
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
         }
-    }
-    return true;
+    }, 5000);
 }
 
 
-// When adding new door, find the next available position
-function findNextAvailablePosition(wallId, doorWidthFeet) {
-    // Convert feet to pixels (you might need to adjust this ratio)
-    const doorWidthPixels = doorWidthFeet * 50; // Adjust multiplier as needed
-
-    // Get all existing doors on this wall
-    const existingDoors = Array.from(document.querySelectorAll(`.component[data-type="door"][data-wall="${wallId}"]`));
-
-    if (existingDoors.length === 0) {
-        return 400; // Default center position for first door
-    }
-
-    // Extract current positions
-    const positions = existingDoors.map(door => {
-        return parseInt(door.getAttribute('data-position') || 0);
-    }).sort((a, b) => a - b);
-
-    // Find the next available position with buffer
-    const buffer = 100; // 100px buffer between doors
-
-    // Check after the last door
-    const lastPosition = positions[positions.length - 1];
-    const suggestedPosition = lastPosition + doorWidthPixels + buffer;
-
-    return suggestedPosition;
-}
